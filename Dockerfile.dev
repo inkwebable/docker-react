@@ -1,0 +1,20 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY ./package.json ./
+
+RUN npm install
+
+#could be removed as we use pwd for vol, but you may want this in the future
+COPY ./ ./
+
+CMD ["npm","run","start"]
+
+#bookmark the node modules folder as a placeholder to the container & tell docker to map current directory to app
+#docker run -it -p 3000:3000 -v /app/node_modules -v ${pwd}:/app fa0dcdb84276
+#run tests & interact needs running container id
+#docker run -it 7b61b34d0683 npm run test
+
+#build image
+#docker build -f Dockerfile.dev .
