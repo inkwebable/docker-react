@@ -18,3 +18,6 @@ CMD ["npm","run","start"]
 
 #build image
 #docker build -f Dockerfile.dev .
+
+#script:
+#  - docker run -e CI=true USERNAME/docker-react npm run test
